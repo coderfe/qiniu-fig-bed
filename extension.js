@@ -35,10 +35,10 @@ function activate(context) {
         qiniu.conf.SECRET_KEY = SK;
 
         // 要上传的空间
-        bucket = bucketName;
+        let bucket = bucketName;
 
         //上传到七牛后保存的文件名
-        key = `${remotePath}.png`;
+        let key = `${remotePath}`;
 
         //构建上传策略函数
         function uptoken(bucket, key) {
@@ -47,10 +47,10 @@ function activate(context) {
         }
 
         // 生成上传 Token
-        token = uptoken(bucket, key);
+        let token = uptoken(bucket, key);
 
         // 要上传文件的本地路径
-        filePath = localFilePath;
+        let filePath = localFilePath;
 
         // 构造上传函数
         function uploadFile(uptoken, key, localFile) {
@@ -77,11 +77,13 @@ function activate(context) {
         uploadFile(token, key, filePath);
 
       }, (err) => {
+        console.log(err);
         return false;
       });
 
     }, (err) => {
       // 文件路径无效
+      console.log(err);
       return false;
     });
 

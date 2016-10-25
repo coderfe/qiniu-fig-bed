@@ -1,23 +1,44 @@
 # qiniu fig bed tool
 
-![qiniu-fig-bed-version](http://vsmarketplacebadge.apphb.com/version/coderfee.qiniu-fig-bed.svg)  ![qiniu-fig-bed-installs](http://vsmarketplacebadge.apphb.com/installs/coderfee.qiniu-fig-bed.svg)
+An extension for VSCode, upload files to qiniu in VSCode.
 
-在 VSCode 中上传图片到七牛云存储。
+## Features
 
-## 功能
+When you insert one image in a `markdown` file, you can use this extension to upload images and get the links of images from qiniu cloud.
 
-编辑 markdown 时，可直接在 VSCode 中上传图片，并自动插入到当前文档。
+For example:
 
-## 安装 & 使用
+![blog/qiniu-fig-bed.gif](http://oaz5uxplb.bkt.clouddn.com/blog/qiniu-fig-bed.gif)
 
-- 安装
-  - 在扩展面板中搜索 **vscode-qiniu**，安装，重启 VSCode。
-- 使用
-  - 快捷键：**Ctrl + Q N**
-  - 输入本地文件的路径，**Shift + 鼠标右键**快速复制文件路径。
-  - 输入上传到七牛云存储的文件名，可以包含前缀，例如：`blog/file.png`。
+## Settings
 
+Open `file > preferences > User Settings > qiniu`, and change your configuration like this: 
 
-## LICENSE
+```json
+"qiniu.enable": true,
+"qiniu.AccessKey": "your access_key",
+"qiniu.SecretKey": "your secret_key",
+"qiniu.bucket": "your bucket",
+"qiniu.remotePath": "",
+"qiniu.domin": "you bucket domin"
+```
 
-[MIT LICENSE](https://github.com/coderfe/qiniu-fig-bed/blob/master/LICENSE)
+> Tips: **access\_key and secret\_key** can find [here](https://portal.qiniu.com/user/key)
+
+## Usage
+
+1. Copy local file path.
+2. **`Ctrl + Q N`**, paste local file path to input box, `Enter`
+3. Enter the remote path, like: `prefix/file-name.fileType`
+
+## Issues
+
+If you find some issues, please contact with me <a href="mailto:coderfee@outlook.com">coderfee@outlook.com</a>
+
+## Release Notes
+
+### 0.0.1
+
+It can work, it can upload file to qiniu
+
+**Enjoy!**
