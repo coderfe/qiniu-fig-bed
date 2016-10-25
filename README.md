@@ -1,4 +1,4 @@
-# vscode-qiniu
+# qiniu fig bed tool
 
 ![qiniu-fig-bed-version](http://vsmarketplacebadge.apphb.com/version/coderfee.qiniu-fig-bed.svg)  ![qiniu-fig-bed-installs](http://vsmarketplacebadge.apphb.com/installs/coderfee.qiniu-fig-bed.svg)
 
@@ -20,4 +20,4 @@
 
 ## LICENSE
 
-MIT LICENSE
+[MIT LICENSE](https://github.com/coderfe/qiniu-fig-bed/blob/master/LICENSE)
