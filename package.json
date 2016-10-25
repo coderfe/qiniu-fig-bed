@@ -11,16 +11,55 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.sayHello"
+    "onLanguage:markdown"
   ],
   "main": "./extension",
   "contributes": {
-    "commands": [
+    "keybindings": [
       {
-        "command": "extension.sayHello",
-        "title": "Hello World"
+        "command": "extension.qiniu",
+        "key": "ctrl+q n",
+        "mac": "cmd+q n",
+        "linux": "ctrl+q n",
+        "when": "editorTextFocus && editorLangId == 'markdown'"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "qiniu config",
+      "properties": {
+        "qiniu.enable": {
+          "type": "boolean",
+          "default": false,
+          "description": "是否开启七牛插件"
+        },
+        "qiniu.AccessKey": {
+          "type": "string",
+          "default": "",
+          "description": "七牛 AccessKey"
+        },
+        "qiniu.SecretKey": {
+          "type": "string",
+          "default": "",
+          "description": "七牛 SecretKey"
+        },
+        "qiniu.bucket": {
+          "type": "string",
+          "default": "",
+          "description": "七牛上传的空间"
+        },
+        "qiniu.remotePath": {
+          "type": "string",
+          "default": "",
+          "description": "文件上传的路径"
+        },
+        "qiniu.domin": {
+          "type": "string",
+          "default": "",
+          "description": "七牛空间域名"
+        }
+      }
+    }
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"
