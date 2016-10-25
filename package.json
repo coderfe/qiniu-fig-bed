@@ -1,7 +1,7 @@
 {
-  "name": "vscode-wechat",
-  "displayName": "vscode-wechat",
-  "description": "Wechat WeApp support for VSCode",
+  "name": "qiniu-fig-bed",
+  "displayName": "qiniu-fig-bed",
+  "description": "Upload files to qiniu in VSCode",
   "version": "0.0.1",
   "publisher": "coderfee",
   "engines": {
@@ -10,6 +10,22 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "qiniu",
+    "七牛",
+    "图床"
+  ],
+  "author": {
+    "name": "coderfee",
+    "email": "coderfee@outlook.com",
+    "url": "http://coderfe.cn"
+  },
+  "homepage": "https://marketplace.visualstudio.com/items?itemName=coderfee.qiniu-fig-bed",
+  "repository": {
+    "url": "https://github.com/coderfe/qiniu-fig-bed.git",
+    "type": "git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
   "activationEvents": [
     "onLanguage:markdown"
   ],
@@ -31,27 +47,27 @@
         "qiniu.enable": {
           "type": "boolean",
           "default": false,
-          "description": "是否开启七牛插件"
+          "description": "是否开启七牛上传插件"
         },
         "qiniu.AccessKey": {
           "type": "string",
           "default": "",
-          "description": "七牛 AccessKey"
+          "description": "必填，七牛 AccessKey"
         },
         "qiniu.SecretKey": {
           "type": "string",
           "default": "",
-          "description": "七牛 SecretKey"
+          "description": "必填，七牛 SecretKey"
         },
         "qiniu.bucket": {
           "type": "string",
           "default": "",
-          "description": "七牛上传的空间"
+          "description": "必填，上传到的空间名称"
         },
         "qiniu.remotePath": {
           "type": "string",
           "default": "",
-          "description": "文件上传的路径"
+          "description": "文件上传到空间后的路径"
         },
         "qiniu.domin": {
           "type": "string",
