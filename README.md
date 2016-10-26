@@ -35,10 +35,4 @@ Open `file > preferences > User Settings > qiniu`, and change your configuration
 
 If you find some issues, please contact with me <a href="mailto:coderfee@outlook.com">coderfee@outlook.com</a>
 
-## Release Notes
-
-### 0.0.1
-
-It can work, it can upload file to qiniu
-
 **Enjoy!**
