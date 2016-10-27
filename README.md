@@ -12,7 +12,7 @@ For example:
 
 ## Settings
 
-Open `file > preferences > User Settings > qiniu`, and change your configuration like this: 
+Open `file > preferences > User Settings > qiniu`, and change your configuration like this:
 
 ```json
 "qiniu.enable": true,
@@ -29,7 +29,7 @@ Open `file > preferences > User Settings > qiniu`, and change your configuration
 
 1. Copy local file path.
 2. **`Ctrl + Q N`**, paste local file path to input box, `Enter`
-3. Enter the remote path, like: `prefix/file-name.fileType`
+3. **IMPORTANT:** Enter the remote path, like: `prefix/file-name.fileType`
 
 ## Issues
 
