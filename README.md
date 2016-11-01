@@ -4,6 +4,8 @@
 
 一款 VSCode 插件，在 VSCode 中上传图片到七牛云空间。
 
+![qiniu-fig-bed](http://vsmarketplacebadge.apphb.com/version/coderfee.qiniu-fig-bed.svg)  ![qiniu-fig-bed](http://vsmarketplacebadge.apphb.com/installs/coderfee.qiniu-fig-bed.svg)
+
 ## 功能展示
 
 当你在编辑 markdown 文件需要插入外部图片时，你可是使用这款插件直接上传并生成 markdown 格式的链接直接插入到文档，省去了在网页端上传的诸多步骤。
