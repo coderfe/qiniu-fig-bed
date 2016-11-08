@@ -27,6 +27,12 @@
         "publish",
         "major"
       ]
+    },
+    {
+      "taskName": "ls",
+      "args": [
+        "ls"
+      ]
     }
   ]
 }

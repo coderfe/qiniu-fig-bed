@@ -1,10 +1,12 @@
-let vscode = require('vscode');
-let qiniu = require('qiniu');
+const path = require('path');
+const vscode = require('vscode');
+const qiniu = require('qiniu');
 
 function activate(context) {
 
   let disposable = vscode.commands.registerCommand('extension.qiniu', function () {
 
+    // 获取用户自定义配置
     const config = vscode.workspace.getConfiguration('qiniu');
     const enable = config.enable;
     if (!enable) {
@@ -15,6 +17,7 @@ function activate(context) {
     const bucketName = config.bucket;
     const domin = config.domin;
 
+    // 输入本地文件路径，复制粘贴
     vscode.window.showInputBox({
       placeHolder: "请输入本地文件路径"
     }).then((res) => {
@@ -22,15 +25,20 @@ function activate(context) {
       // 取到本地文件路径
       const reg = /"/g;
       let localFilePath = res.replace(reg, '');
+      // 获取文件类型
+      let extname = path.extname(localFilePath);
 
-      console.log(localFilePath);
+      // console.log(localFilePath);
 
+      // 上传至七牛空间后的文件名
       vscode.window.showInputBox({
-        placeHolder: "请输入上传到七牛云空间后的文件名，可以包含前缀，例如：blog/name.png"
+        placeHolder: "请输入上传到七牛云空间后的文件名，可以包含前缀，例如：blog/file"
       }).then((res) => {
 
-        const remotePath = res;
+        // 如果 res 未填，则使用默认设置
+        res = res ? res : new Date().getTime();
 
+        // 配置 AccessKey / SecretKey
         qiniu.conf.ACCESS_KEY = AK;
         qiniu.conf.SECRET_KEY = SK;
 
@@ -38,7 +46,7 @@ function activate(context) {
         let bucket = bucketName;
 
         //上传到七牛后保存的文件名
-        let key = `${remotePath}`;
+        let key = `${res}${extname}`;
 
         //构建上传策略函数
         function uptoken(bucket, key) {
@@ -77,6 +85,7 @@ function activate(context) {
         uploadFile(token, key, filePath);
 
       }, (err) => {
+        // 上传至七牛空间后的文件名无效
         console.log(err);
         return false;
       });
