@@ -66,7 +66,7 @@ function activate(context) {
           qiniu.io.putFile(uptoken, key, localFile, extra, function (err, ret) {
             if (!err) {
               // 上传成功， 处理返回值
-              const image = `![${remotePath}](${domin}/${ret.key})`;
+              const image = `![${key}](${domin}/${ret.key})`;
               let editor = vscode.window.activeTextEditor;
 
               editor.edit((textEditorEdit) => {

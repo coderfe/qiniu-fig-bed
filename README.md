@@ -8,7 +8,7 @@
 
 ## 功能展示
 
-当你在编辑 markdown 文件需要插入外部图片时，你可是使用这款插件直接上传并生成 markdown 格式的链接直接插入到文档，省去了在网页端上传的诸多步骤。
+当你在编辑 markdown 文件需要插入外部图片时，你可是使用这款插件直接上传并生成 markdown 格式的链接直接插入到文档，省去了在网页端上传的诸多步骤。（前提是需要复制本地文件路径）
 
 示例如下:
 
@@ -33,7 +33,7 @@
 
 1. 复制本地文件路径（`Shift + 鼠标右键` > 复制为路径）
 2. 在 VSCode 中按快捷键：**`Ctrl + Q N`** ，将路径粘贴到输入框中，回车
-3. **IMPORTANT：** 然后再弹出的第二个输入框中输入文件上传之后的名称，可以包含前缀，如：`前缀/文件名.文件格式`
+3. **IMPORTANT：** 然后再弹出的第二个输入框中输入文件上传之后的名称，可以包含前缀（用于分类文件），如：`前缀/文件名`
 4. 各个步骤中没有进行验证，所以应该正确输入文件路径和文件名称，否则会返回不正确的链接
 
 ## 联系我
@@ -72,7 +72,7 @@ Open `file > preferences > User Settings > qiniu`, and change your configuration
 
 1. Copy local file path.
 2. **`Ctrl + Q N`**, paste local file path to input box, `Enter`
-3. **IMPORTANT:** Enter the remote path, like: `prefix/file-name.fileType`
+3. **IMPORTANT:** Enter the remote path, like: `prefix/file-name`
 
 ## Issues
 
