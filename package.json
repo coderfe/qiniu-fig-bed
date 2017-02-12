@@ -80,6 +80,7 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "dependencies": {
+        "clipboardy": "^0.1.2",
         "qiniu": "^6.1.13"
     },
     "devDependencies": {

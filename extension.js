@@ -1,6 +1,7 @@
 const path = require('path');
 const vscode = require('vscode');
 const qiniu = require('qiniu');
+const clipboardy = require('clipboardy');
 
 function activate(context) {
 
@@ -17,24 +18,18 @@ function activate(context) {
     const bucketName = config.bucket;
     const domin = config.domin;
 
-    // 输入本地文件路径，复制粘贴
-    vscode.window.showInputBox({
-      placeHolder: "请输入本地文件路径"
-    }).then((res) => {
+    // 从系统剪切板中获取文件
+    const extNameReg = /(png|jpg|jpeg|gif|webp|bmp|svg)/ig;
+    const localFilePath = clipboardy.read();
+    const localFilePathExt = path.extname(localFilePath);
+    const isPicture = extNameReg.test(localFilePathExt);
 
-      // 取到本地文件路径
-      const reg = /"/g;
-      let localFilePath = res.replace(reg, '');
-      // 获取文件类型
-      let extname = path.extname(localFilePath);
-
-      // console.log(localFilePath);
-
-      // 上传至七牛空间后的文件名
+    if (isPicture) {
+      // 上传图片
+      
       vscode.window.showInputBox({
         placeHolder: "请输入上传到七牛云空间后的文件名，可以包含前缀，例如：blog/file"
       }).then((res) => {
-
         // 如果 res 未填，则使用默认设置
         res = res ? res : new Date().getTime();
 
@@ -46,7 +41,7 @@ function activate(context) {
         let bucket = bucketName;
 
         //上传到七牛后保存的文件名
-        let key = `${res}${extname}`;
+        let key = `${res}${localFilePathExt}`;
 
         //构建上传策略函数
         function uptoken(bucket, key) {
@@ -83,18 +78,10 @@ function activate(context) {
 
         // 调用uploadFile上传
         uploadFile(token, key, filePath);
-
-      }, (err) => {
-        // 上传至七牛空间后的文件名无效
-        console.log(err);
-        return false;
       });
-
-    }, (err) => {
-      // 文件路径无效
-      console.log(err);
-      return false;
-    });
+    } else {
+      return;
+    }
 
   });
 
