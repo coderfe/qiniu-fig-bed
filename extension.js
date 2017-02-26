@@ -1,107 +1,94 @@
-const path = require('path');
-const vscode = require('vscode');
-const qiniu = require('qiniu');
+const vscode = require('vscode')
+const path = require('path')
+const qiniu = require('qiniu')
+const moment = require('moment')
 
-function activate(context) {
+function activate (context) {
+  let disposable = vscode.commands.registerCommand('extension.qiniu', () => {
+    // 获取用户的配置信息
+    const userConfig = vscode.workspace.getConfiguration('qiniu')
+    const isEnable = userConfig.enable
 
-  let disposable = vscode.commands.registerCommand('extension.qiniu', function () {
-
-    // 获取用户自定义配置
-    const config = vscode.workspace.getConfiguration('qiniu');
-    const enable = config.enable;
-    if (!enable) {
-      vscode.window.showWarningMessage('请修改配置文件以启用插件：file > perferences > User Settings');
+    // 如未启用，提示用户启用
+    if (!isEnable) {
+      vscode.window.showInformationMessage('请在配置文件中启用插件，qinqiniu.enable: true')
     }
-    const AK = config.AccessKey;
-    const SK = config.SecretKey;
-    const bucketName = config.bucket;
-    const domin = config.domin;
 
-    // 输入本地文件路径，复制粘贴
+    const accessKey = userConfig.AccessKey
+    const secretKey = userConfig.SecretKey
+    const bucketName = userConfig.bucket
+    const domin = userConfig.domin
+
     vscode.window.showInputBox({
-      placeHolder: "请输入本地文件路径"
-    }).then((res) => {
+      placeHolder: '请输入本地文件路径'
+    }).then((val) => {
+      if (val) {
+        // 验证本地文件路径
+        const reg = /"/g
+        let localFilePath = val.replace(reg, '')
+        // 文件类型
+        let fileExt = path.extname(localFilePath)
 
-      // 取到本地文件路径
-      const reg = /"/g;
-      let localFilePath = res.replace(reg, '');
-      // 获取文件类型
-      let extname = path.extname(localFilePath);
+        // 设置上传后的文件名
+        vscode.window.showInputBox({
+          placeHolder: '输入上传后的文件名，可包含前缀，可省略文件后缀。如：blog/shot'
+        }).then((val) => {
+          let remoteName
+          if (val) {
+            remoteName = val
+          } else if (val === undefined) {
+            return
+          } else {
+            let now = moment()
+            remoteName = moment(now).format('YYYY-MM-DD-HH-mm-ss')
+          }
 
-      // console.log(localFilePath);
+          // 上传配置
+          qiniu.conf.ACCESS_KEY = accessKey
+          qiniu.conf.SECRET_KEY = secretKey
+          let bucket = bucketName
+          let key = `${remoteName}${fileExt}`
 
-      // 上传至七牛空间后的文件名
-      vscode.window.showInputBox({
-        placeHolder: "请输入上传到七牛云空间后的文件名，可以包含前缀，例如：blog/file"
-      }).then((res) => {
+          function uptoken (bucket, key) {
+            var putPolicy = new qiniu.rs.PutPolicy(bucket + ':' + key)
+            return putPolicy.token()
+          }
 
-        // 如果 res 未填，则使用默认设置
-        res = res ? res : new Date().getTime();
+          let token = uptoken(bucket, key)
 
-        // 配置 AccessKey / SecretKey
-        qiniu.conf.ACCESS_KEY = AK;
-        qiniu.conf.SECRET_KEY = SK;
+          // 构造上传函数
+          function uploadFile (uptoken, key, localFile) {
+            var extra = new qiniu.io.PutExtra()
+            qiniu.io.putFile(uptoken, key, localFile, extra, function (err, ret) {
+              if (!err) {
+                // 上传成功， 处理返回值
+                const mdImageUrl = `![${key}](${domin}/${ret.key})`
+                let editor = vscode.window.activeTextEditor
 
-        // 要上传的空间
-        let bucket = bucketName;
+                editor.edit((textEditorEdit) => {
+                  textEditorEdit.insert(editor.selection.active, mdImageUrl)
+                })
+                vscode.window.showInformationMessage('上传成功！')
+              } else {
+                // 上传失败， 处理返回代码
+                vscode.window.showWarningMessage(err.error)
+              }
+            })
+          }
+          uploadFile(token, key, localFilePath)
+        })
+      } else {
+        return
+      }
+    })
+  })
 
-        //上传到七牛后保存的文件名
-        let key = `${res}${extname}`;
-
-        //构建上传策略函数
-        function uptoken(bucket, key) {
-          var putPolicy = new qiniu.rs.PutPolicy(bucket + ":" + key);
-          return putPolicy.token();
-        }
-
-        // 生成上传 Token
-        let token = uptoken(bucket, key);
-
-        // 要上传文件的本地路径
-        let filePath = localFilePath;
-
-        // 构造上传函数
-        function uploadFile(uptoken, key, localFile) {
-          var extra = new qiniu.io.PutExtra();
-          qiniu.io.putFile(uptoken, key, localFile, extra, function (err, ret) {
-            if (!err) {
-              // 上传成功， 处理返回值
-              const image = `![${key}](${domin}/${ret.key})`;
-              let editor = vscode.window.activeTextEditor;
-
-              editor.edit((textEditorEdit) => {
-                textEditorEdit.insert(editor.selection.active, image);
-              });
-              vscode.window.showInformationMessage("上传成功！");
-
-            } else {
-              // 上传失败， 处理返回代码
-              vscode.window.showWarningMessage(err.error);
-            }
-          });
-        }
-
-        // 调用uploadFile上传
-        uploadFile(token, key, filePath);
-
-      }, (err) => {
-        // 上传至七牛空间后的文件名无效
-        console.log(err);
-        return false;
-      });
-
-    }, (err) => {
-      // 文件路径无效
-      console.log(err);
-      return false;
-    });
-
-  });
-
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable)
 }
-exports.activate = activate;
+exports.activate = activate
 
-function deactivate() {
+function deactivate () {
 }
-exports.deactivate = deactivate;
+
+exports.deactivate = deactivate
+

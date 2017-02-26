@@ -1,14 +1,17 @@
 # Change Log
 
-## v0.0.3
+## 0.0.4
 
-- Fix bug
-  You can upload file without extension name
+- 优化代码
 
-## v0.0.2
+## 0.0.3
+
+- 省略文件后缀，自动匹配
+
+## 0.0.2
 
 - Fix some bug
 
-## v0.0.1
+## 0.0.1
 
 - It can work

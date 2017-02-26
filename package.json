@@ -2,7 +2,7 @@
     "name": "qiniu-fig-bed",
     "displayName": "qiniu-fig-bed",
     "description": "Upload files to qiniu cloud in VSCode",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "publisher": "coderfee",
     "engines": {
         "vscode": "^1.5.0"
@@ -31,6 +31,10 @@
     ],
     "main": "./extension",
     "contributes": {
+        "commands": {
+            "command": "extension.qiniu",
+            "title": "Upload file to qiniu cloud"
+        },
         "keybindings": [
             {
                 "command": "extension.qiniu",
@@ -80,6 +84,7 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "dependencies": {
+        "moment": "^2.17.1",
         "qiniu": "^6.1.13"
     },
     "devDependencies": {
