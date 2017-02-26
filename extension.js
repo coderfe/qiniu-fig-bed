@@ -13,7 +13,7 @@ function activate (context) {
     if (!isEnable) {
       vscode.window.showInformationMessage('请在配置文件中启用插件，qinqiniu.enable: true')
     }
-
+    // 上传配置
     const accessKey = userConfig.AccessKey
     const secretKey = userConfig.SecretKey
     const bucketName = userConfig.bucket

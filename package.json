@@ -85,6 +85,7 @@
     },
     "dependencies": {
         "moment": "^2.17.1",
+        "clipboardy": "^0.1.2",
         "qiniu": "^6.1.13"
     },
     "devDependencies": {
