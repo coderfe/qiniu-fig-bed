@@ -4,6 +4,7 @@
     "description": "Upload files to qiniu cloud in VSCode",
     "version": "0.0.4",
     "publisher": "coderfee",
+    "icon": "image/upload-file.svg",
     "engines": {
         "vscode": "^1.5.0"
     },
