@@ -1779,6 +1779,10 @@ mocha@^2.3.3:
     supports-color "1.2.0"
     to-iso-string "0.0.2"
 
+moment@^2.17.1:
+  version "2.17.1"
+  resolved "http://registry.npm.taobao.org/moment/download/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
+
 ms@0.7.1:
   version "0.7.1"
   resolved "http://registry.npm.taobao.org/ms/download/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"

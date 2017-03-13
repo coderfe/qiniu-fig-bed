@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.5
+- fix can't upload file on Ubuntu
+
 ## 0.0.4
 
 - 优化代码
