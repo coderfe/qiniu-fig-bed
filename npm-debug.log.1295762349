@@ -1,0 +1,57 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/coderfe/.nvm/versions/node/v6.10.2/bin/node',
+1 verbose cli   '/home/coderfe/.nvm/versions/node/v6.10.2/bin/npm',
+1 verbose cli   'show',
+1 verbose cli   'vsce',
+1 verbose cli   'version' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.2
+4 silly mapToRegistry name vsce
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npm.taobao.org/
+7 silly mapToRegistry data Result {
+7 silly mapToRegistry   raw: 'vsce',
+7 silly mapToRegistry   scope: null,
+7 silly mapToRegistry   escapedName: 'vsce',
+7 silly mapToRegistry   name: 'vsce',
+7 silly mapToRegistry   rawSpec: '',
+7 silly mapToRegistry   spec: 'latest',
+7 silly mapToRegistry   type: 'tag' }
+8 silly mapToRegistry uri https://registry.npm.taobao.org/vsce
+9 verbose request uri https://registry.npm.taobao.org/vsce
+10 verbose request no auth needed
+11 info attempt registry request try #1 at 9:32:10 AM
+12 verbose request id 5c7f93463bc2be2c
+13 verbose etag "14980-NH25+wlj7oIMIPULHRiJyEDMUss"
+14 http request GET https://registry.npm.taobao.org/vsce
+15 http 304 https://registry.npm.taobao.org/vsce
+16 verbose headers { date: 'Wed, 19 Apr 2017 01:32:11 GMT',
+16 verbose headers   connection: 'keep-alive',
+16 verbose headers   'x-current-requests': '1',
+16 verbose headers   etag: '"14980-NH25+wlj7oIMIPULHRiJyEDMUss"',
+16 verbose headers   'x-readtime': '37' }
+17 silly get cb [ 304,
+17 silly get   { date: 'Wed, 19 Apr 2017 01:32:11 GMT',
+17 silly get     connection: 'keep-alive',
+17 silly get     'x-current-requests': '1',
+17 silly get     etag: '"14980-NH25+wlj7oIMIPULHRiJyEDMUss"',
+17 silly get     'x-readtime': '37' } ]
+18 verbose etag https://registry.npm.taobao.org/vsce from cache
+19 verbose get saving vsce to /home/coderfe/.npm/registry.npm.taobao.org/vsce/.cache.json
+20 verbose correctMkdir /home/coderfe/.npm correctMkdir not in flight; initializing
+21 verbose exit [ 0, true ]
+22 verbose stack Error: write EPIPE
+22 verbose stack     at exports._errnoException (util.js:1018:11)
+22 verbose stack     at WriteWrap.afterWrite (net.js:804:14)
+23 verbose cwd /home/coderfe/Documents/vscode/qiniu-fig-bed
+24 error Linux 4.4.0-72-generic
+25 error argv "/home/coderfe/.nvm/versions/node/v6.10.2/bin/node" "/home/coderfe/.nvm/versions/node/v6.10.2/bin/npm" "show" "vsce" "version"
+26 error node v6.10.2
+27 error npm  v3.10.10
+28 error code EPIPE
+29 error errno EPIPE
+30 error syscall write
+31 error write EPIPE
+32 error If you need help, you may report this error at:
+32 error     <https://github.com/npm/npm/issues>
+33 verbose exit [ 1, true ]

@@ -28,7 +28,7 @@
 "qiniu.SecretKey": "your secret_key",
 "qiniu.bucket": "your bucket",
 "qiniu.remotePath": "",
-"qiniu.domin": "you bucket domin"
+"qiniu.domain": "you bucket domain"
 ```
 
 > 小提示: **access\_key & secret\_key** 可以在[这里](https://portal.qiniu.com/user/key)找到
