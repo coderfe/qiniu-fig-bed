@@ -1,6 +1,6 @@
 # VSCode 七牛图床工具
 
-![qiniu-fig-bed](http://vsmarketplacebadge.apphb.com/version/coderfee.qiniu-fig-bed.svg)  ![qiniu-fig-bed](http://vsmarketplacebadge.apphb.com/installs/coderfee.qiniu-fig-bed.svg)
+![qiniu-fig-bed](https://vsmarketplacebadge.apphb.com/version/coderfee.qiniu-fig-bed.svg)  ![qiniu-fig-bed](https://vsmarketplacebadge.apphb.com/installs/coderfee.qiniu-fig-bed.svg)
 
 一款 VSCode 插件，在 VSCode 中上传图片到七牛云空间。
 
@@ -10,7 +10,7 @@
 
 示例如下:
 
-![blog/qiniu-fig-bed.gif](http://oaz5uxplb.bkt.clouddn.com/blog/qiniu-fig-bed.gif)
+![blog/qiniu-fig-bed.gif](https://oaz5uxplb.bkt.clouddn.com/blog/qiniu-fig-bed.gif)
 
 > 小提示：第二个输入框的内容可选，如果不填则会将文件名称格式化为当前日期。
 

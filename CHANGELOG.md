@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.71
+- change icon
+
 ## 0.0.6
 
 - fix [#3](https://github.com/coderfe/qiniu-fig-bed/issues/3) [@i2Echo](https://github.com/i2Echo)
