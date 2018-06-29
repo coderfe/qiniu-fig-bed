@@ -11,7 +11,8 @@ function activate (context) {
 
     // 如未启用，提示用户启用
     if (!isEnable) {
-      vscode.window.showInformationMessage('请在配置文件中启用插件，qiniu.enable: true')
+      vscode.window.showInformationMessage('请在设置中启用插件，qiniu.enable: true')
+      return
     }
     // 上传配置
     const accessKey = userConfig.AccessKey
