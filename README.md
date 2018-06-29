@@ -10,7 +10,7 @@
 
 示例如下:
 
-![blog/qiniu-fig-bed.gif](https://oaz5uxplb.bkt.clouddn.com/blog/qiniu-fig-bed.gif)
+![blog/qiniu-fig-bed.gif](https://github.com/coderfe/qiniu-fig-bed/blob/master/image/qiniu-fig-bed.gif)
 
 > 小提示：第二个输入框的内容可选，如果不填则会将文件名称格式化为当前日期。
 

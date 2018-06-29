@@ -2,7 +2,7 @@
   "name": "qiniu-fig-bed",
   "displayName": "qiniu-fig-bed",
   "description": "Upload files to qiniu cloud in VSCode",
-  "version": "0.0.71",
+  "version": "0.0.8",
   "publisher": "coderfee",
   "icon": "image/upload.png",
   "engines": {
