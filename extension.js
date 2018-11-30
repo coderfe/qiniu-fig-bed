@@ -19,6 +19,7 @@ function activate (context) {
     const secretKey = userConfig.SecretKey
     const bucketName = userConfig.bucket
     const domain = userConfig.domain
+    const protocol = userConfig.protocol
 
     vscode.window.showInputBox({
       placeHolder: '请输入本地文件路径'
@@ -63,7 +64,10 @@ function activate (context) {
             qiniu.io.putFile(uptoken, key, localFile, extra, function (err, ret) {
               if (!err) {
                 // 上传成功， 处理返回值
-                const mdImageUrl = `![${key}](${domain}/${ret.key})`
+                const url = protocol ?
+                  `${protocol}${domain}/${ret.key}` :
+                  `${domain}/${ret.key}`;
+                const mdImageUrl = `![${key}](${url})`
                 let editor = vscode.window.activeTextEditor
 
                 editor.edit((textEditorEdit) => {

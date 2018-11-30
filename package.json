@@ -2,7 +2,7 @@
   "name": "qiniu-fig-bed",
   "displayName": "qiniu-fig-bed",
   "description": "Upload files to qiniu cloud in VSCode",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "publisher": "coderfee",
   "icon": "image/upload.png",
   "engines": {
@@ -77,6 +77,11 @@
           "type": "string",
           "default": "",
           "description": "与云空间对应的空间域名"
+        },
+        "qiniu.protocol": {
+          "type": "string",
+          "default": "",
+          "description": "默认协议，例如 \"https://\""
         }
       }
     }
