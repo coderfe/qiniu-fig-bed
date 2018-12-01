@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.2.0
+- feat: add protocol config. [@ringcrl](https://github.com/ringcrl)
+
 ## 0.0.71
 - change icon
 
